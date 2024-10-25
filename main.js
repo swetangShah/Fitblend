@@ -1,3 +1,6 @@
+const myCarousel = document.getElementById('carouselVideoExample');
+const carousel = new mdb.Carousel(myCarousel);
+
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");

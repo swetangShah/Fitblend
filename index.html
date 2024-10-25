@@ -12,6 +12,8 @@
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Web Design Mastery | Fit Blend</title>
   </head>
   <body>
@@ -26,6 +28,7 @@
           </div>
         </div>
         <ul class="nav__links" id="nav-links">
+          <button onclick="showModal()">Login</button>
           <li class="link"><a href="#home">Home</a></li>
           <li class="link"><a href="#about">About</a></li>
           <li class="link"><a href="#class">Classes</a></li>
@@ -34,25 +37,195 @@
           <li class="link"><button class="btn">Contact Us</button></li>
         </ul>
       </nav>
-      <div class="section__container header__container" id="home">
-        <div class="header__image">
-          <img src="assets/header.png" alt="header" />
-        </div>
-        <div class="header__content">
-          <h4>Build Your Body &</h4>
-          <h1 class="section__header">Shape Yourself!</h1>
-          <p>
-            Unleash your potential and embark on a journey towards a stronger,
-            fitter, and more confident you. Sign up for 'Make Your Body Shape'
-            now and witness the incredible transformation your body is capable
-            of!
-          </p>
-          <div class="header__btn">
-            <button class="btn">Join Today</button>
-          </div>
-        </div>
-      </div>
     </header>
+
+    <div id="loginModal" class="modal">
+      <div class="modal-content" id="loginOptions">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Select Login Type</h2>
+          <button onclick="showLoginForm('admin')">Admin Login</button>
+          <button onclick="showLoginForm('user')">User Login</button>
+          <button onclick="showLoginForm('trainer')">Trainer Login</button>
+      </div>
+
+      <!-- Admin Login Form -->
+      <div class="modal-content" id="adminLoginForm" style="display: none;">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Admin Login</h2>
+          <form onsubmit="handleLogin(event, 'Admin')">
+              <input type="text" id="admin-username" name="username" placeholder="Admin Username" required>
+              <input type="password" id="admin-password" name="password" placeholder="Password" required>
+              <button type="submit">Login</button>
+          </form>
+      </div>
+
+      <!-- User Login Form -->
+      <div class="modal-content" id="userLoginForm" style="display: none;">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>User Login</h2>
+          <form onsubmit="handleLogin(event, 'User')">
+              <input type="text" id="user-username" name="username" placeholder="User Username" required>
+              <input type="password" id="user-password" name="password" placeholder="Password" required>
+              <button type="submit">Login</button>
+          </form>
+      </div>
+
+      <!-- Trainer Login Form -->
+      <div class="modal-content" id="trainerLoginForm" style="display: none;">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2>Trainer Login</h2>
+          <form onsubmit="handleLogin(event, 'Trainer')">
+              <input type="text" id="trainer-username" name="username" placeholder="Trainer Username" required>
+              <input type="password" id="trainer-password" name="password" placeholder="Password" required>
+              <button type="submit">Login</button>
+          </form>
+      </div>
+    </div>
+
+  <script>
+    // Show modal with login options
+    function showModal() {
+        document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    // Close the modal
+    function closeModal() {
+        document.getElementById('loginModal').style.display = 'none';
+        // Reset all forms and options
+        document.getElementById('loginOptions').style.display = 'block';
+        document.getElementById('adminLoginForm').style.display = 'none';
+        document.getElementById('userLoginForm').style.display = 'none';
+        document.getElementById('trainerLoginForm').style.display = 'none';
+    }
+
+    // Show the specific login form based on the selected type
+    function showLoginForm(type) {
+        document.getElementById('loginOptions').style.display = 'none'; // Hide options
+
+        if (type === 'admin') {
+            document.getElementById('adminLoginForm').style.display = 'block';
+        } else if (type === 'user') {
+            document.getElementById('userLoginForm').style.display = 'block';
+        } else if (type === 'trainer') {
+            document.getElementById('trainerLoginForm').style.display = 'block';
+        }
+    }
+
+    // Handle login form submission
+    function handleLogin(event, userType) {
+        event.preventDefault(); // Prevent page refresh
+        alert(userType + ' Login successfully!'); // Show success message
+        closeModal(); // Close the modal after login
+    }
+
+    // Close modal if clicking outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById('loginModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
+
+
+          
+    <!-- page1 -->
+     <!-- Carousel wrapper -->
+<div
+id="carouselVideoExample"
+data-mdb-carousel-init class="carousel slide carousel-fade"
+data-mdb-ride="carousel"
+>
+<!-- Indicators -->
+<div class="carousel-indicators">
+  <button data-mdb-button-init
+    type="button"
+    data-mdb-target="#carouselVideoExample"
+    data-mdb-slide-to="0"
+    class="active"
+    aria-current="true"
+    aria-label="Slide 1"
+  ></button>
+  <button data-mdb-button-init
+    type="button"
+    data-mdb-target="#carouselVideoExample"
+    data-mdb-slide-to="1"
+    aria-label="Slide 2"
+  ></button>
+  <button data-mdb-button-init
+    type="button"
+    data-mdb-target="#carouselVideoExample"
+    data-mdb-slide-to="2"
+    aria-label="Slide 3"
+  ></button>
+</div>
+
+<!-- Inner -->
+<div class="carousel-inner">
+  <!-- First item: Warm-Up Exercise -->
+  <div class="carousel-item active">
+    <video class="img-fluid" autoplay loop muted>
+      <source src="https://www.youtube.com/watch?v=6-0kNSg27b4" type="video/mp4" />
+    </video>
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Warm-Up Exercises</h5>
+      <p>
+        Start your workout session with a set of essential warm-up exercises to get your body ready.
+      </p>
+    </div>
+  </div>
+
+  <!-- Second item: Weight Lifting -->
+  <div class="carousel-item">
+    <video class="img-fluid" autoplay loop muted>
+      <source src="https://www.youtube.com/embed/UoC_O3HzsH0" type="video/mp4" />
+    </video>
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Weight Lifting Guide</h5>
+      <p>
+        Learn the proper technique for lifting weights to build muscle strength effectively and safely.
+      </p>
+    </div>
+  </div>
+
+  <!-- Third item: Cardio Workout -->
+  <div class="carousel-item">
+    <video class="img-fluid" autoplay loop muted>
+      <source src="https://www.youtube.com/embed/UoC_O3HzsH0" type="video/mp4" />
+    </video>
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Cardio Routine</h5>
+      <p>
+        This cardio routine is designed to improve endurance and boost heart health.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Inner -->
+
+<!-- Controls -->
+<button data-mdb-button-init
+  class="carousel-control-prev"
+  type="button"
+  data-mdb-target="#carouselVideoExample"
+  data-mdb-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button data-mdb-button-init
+  class="carousel-control-next"
+  type="button"
+  data-mdb-target="#carouselVideoExample"
+  data-mdb-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<!-- Carousel wrapper -->
+ <!-- page2 -->
 
     <section class="section__container about__container" id="about">
       <div class="about__image">
@@ -415,13 +588,14 @@
         </div>
       </div>
       <div class="footer__bar">
-        Copyright © 2023 Web Design Mastery. All rights reserved.
+        Copyright © 2024 FIT Blend. All rights reserved.
       </div>
           
     </footer>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.0/mdb.min.js"></script>
     <script src="main.js"></script>
     
 
